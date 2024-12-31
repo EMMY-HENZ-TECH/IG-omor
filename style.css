@@ -1,0 +1,105 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  background-color: #FAFAFA;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-box {
+  background: white;
+  padding: 30px 40px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  background-color: #3897f0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #287bce;
+}
+
+.forgot {
+  display: block;
+  margin-top: 15px;
+  color: #00376B;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.divider hr {
+  flex: 1;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+.divider span {
+  margin: 0 10px;
+  color: #888;
+  font-size: 14px;
+}
+
+.create {
+  background: none;
+  color: #00376B;
+  border: 1px solid #ddd;
+}
+
+.error-container {
+  text-align: center;
+  padding: 50px;
+}
+
+.error-container img {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.error-container h2 {
+  color: #333;
+}
+
+.error-container p {
+  color: #777;
+  }
